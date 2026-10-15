@@ -22,7 +22,7 @@
                 <div class="flex items-center gap-4 flex-wrap">
                     <div class="w-20 h-20 rounded-xl bg-bg border border-dashed border-gray-300 flex items-center justify-center shrink-0 overflow-hidden">
                         @if ($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                            <img src="{{ asset( $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                         @else
                             <svg class="w-7 h-7 text-subtext" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 8h16M4 4h16v16H4V4z"/></svg>
                         @endif
@@ -94,7 +94,7 @@
                 <div id="labelEditor" class="{{ $product->label_image ? '' : 'hidden' }} mb-4">
                     <p class="text-sm font-medium text-ink mb-2">Posisi QR</p>
                     <div id="labelStage" class="relative inline-block max-w-full border border-gray-200 rounded-lg overflow-hidden select-none touch-none">
-                        <img id="labelPreview" src="{{ $product->label_image ? asset('storage/' . $product->label_image) : '' }}" alt="Template label" class="block max-w-full h-auto" style="max-height: 480px;" draggable="false">
+                        <img id="labelPreview" src="{{ $product->label_image ? asset( $product->label_image) : '' }}" alt="Template label" class="block max-w-full h-auto" style="max-height: 480px;" draggable="false">
                         <div id="qrBox" class="absolute border-2 border-primary bg-primary/20 cursor-move" style="display:none;">
                             <span class="absolute inset-0 flex items-center justify-center text-[10px] font-semibold text-primary pointer-events-none">QR</span>
                             <div id="qrHandle" class="absolute -right-1.5 -bottom-1.5 w-4 h-4 bg-primary rounded-sm cursor-nwse-resize"></div>

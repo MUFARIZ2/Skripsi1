@@ -22,7 +22,7 @@
                     <div class="p-5 flex items-center gap-4">
                         <div class="w-14 h-14 rounded-xl bg-bg border border-gray-100 flex items-center justify-center shrink-0 overflow-hidden">
                             @if ($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                                <img src="{{ asset( $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                             @else
                                 <svg class="w-7 h-7 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6l1 4H8l1-4zM8 7h8l1 12a2 2 0 01-2 2H9a2 2 0 01-2-2L8 7z"/></svg>
                             @endif

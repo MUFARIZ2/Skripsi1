@@ -93,6 +93,24 @@
 
     let html5QrCode;
 
+    function extractKode(text) {
+        try {
+            const u = new URL(text);
+            return u.searchParams.get('kode') ?? text;
+        } catch (e) {
+            return text;
+        }
+    }
+
+    (function () {
+        const params = new URLSearchParams(window.location.search);
+        const kode = params.get('kode');
+        if (!kode) return;
+        window.history.replaceState({}, document.title, window.location.pathname);
+        document.getElementById('scanKodeInput').value = kode;
+        document.getElementById('formScanResult').submit();
+    })();
+
     function startScan() {
         document.getElementById('btnStartScan').classList.add('hidden');
         document.getElementById('scanStatus').textContent = 'Mengaktifkan kamera...';
@@ -104,7 +122,8 @@
             { fps: 10, qrbox: 220, aspectRatio: 1.0 }, // dipaksa 1:1 biar tidak overflow
             (decodedText) => {
                 html5QrCode.stop().then(() => {
-                    document.getElementById('scanKodeInput').value = decodedText;
+                    // document.getElementById('scanKodeInput').value = decodedText; // old
+                    document.getElementById('scanKodeInput').value = extractKode(decodedText);
                     document.getElementById('formScanResult').submit();
                 });
             },

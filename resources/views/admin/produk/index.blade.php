@@ -92,7 +92,7 @@
                     <td class="px-6 py-3.5">
                     <div class="w-10 h-10 rounded-lg bg-bg border border-gray-100 flex items-center justify-center overflow-hidden">
                         @if ($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                         @else
                             <svg class="w-5 h-5 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6l1 4H8l1-4zM8 7h8l1 12a2 2 0 01-2 2H9a2 2 0 01-2-2L8 7z"/></svg>
                         @endif
@@ -132,7 +132,7 @@
                     <div class="flex gap-3">
                         <div class="w-12 h-12 shrink-0 rounded-lg bg-bg border border-gray-100 flex items-center justify-center overflow-hidden">
                             @if ($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                                <img src="{{ asset( $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                             @else
                                 <svg class="w-6 h-6 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6l1 4H8l1-4zM8 7h8l1 12a2 2 0 01-2 2H9a2 2 0 01-2-2L8 7z"/></svg>
                             @endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Models\Batch;
 use App\Models\QrCode;
 use App\Services\CipherService;
@@ -56,11 +57,11 @@ class ProductController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('foto')) {
-            $imagePath = $request->file('foto')->store('produk', 'public');
+            $imagePath = $this->uploadToPublic($request->file('foto'), 'assets/produk');
         }
         $labelPath = null;
         if ($request->hasFile('label_image')) {
-            $labelPath = $request->file('label_image')->store('label', 'public');
+            $labelPath = $this->uploadToPublic($request->file('label_image'), 'assets/label');
         }
 
         Product::create([
@@ -107,18 +108,14 @@ class ProductController extends Controller
         $imagePath = $product->image;
 
         if ($request->hasFile('foto')) {
-            if ($product->image) {
-                \Storage::disk('public')->delete($product->image);
-            }
-            $imagePath = $request->file('foto')->store('produk', 'public');
+            $this->deleteFromPublic($product->image);
+            $imagePath = $this->uploadToPublic($request->file('foto'), 'assets/produk');
         }
 
         $labelPath = $product->label_image;
         if ($request->hasFile('label_image')) {
-            if ($product->label_image) {
-                \Storage::disk('public')->delete($product->label_image);
-            }
-            $labelPath = $request->file('label_image')->store('label', 'public');
+            $this->deleteFromPublic($product->label_image);
+            $labelPath = $this->uploadToPublic($request->file('label_image'), 'assets/label');
         }
 
         $product->update([
@@ -145,9 +142,8 @@ class ProductController extends Controller
                 ->with('error', 'Produk "' . $product->name . '" tidak bisa dihapus karena sudah memiliki riwayat batch produksi. Hapus dulu batch terkait jika benar-benar ingin menghapus produk ini.');
         }
 
-        if ($product->image) {
-            \Storage::disk('public')->delete($product->image);
-        }
+        $this->deleteFromPublic($product->image);
+        $this->deleteFromPublic($product->label_image);
 
         $product->delete();
 
@@ -216,5 +212,49 @@ class ProductController extends Controller
         } while (Batch::where('batch_code', $code)->exists());
 
         return $code;
+    }
+
+    /**
+     * Base path folder public (production vs local).
+     */
+    private function publicBasePath(): string
+    {
+        return app()->environment('production')
+            ? '/home/olia4111/public_html'
+            : public_path();
+    }
+
+    /**
+     * Upload file langsung ke folder public/{folder}.
+     * Mengembalikan path relatif (contoh: "produk/abc123.jpg") untuk disimpan di DB.
+     */
+    private function uploadToPublic(UploadedFile $file, string $folder): string
+    {
+        $destination = $this->publicBasePath() . '/' . $folder;
+
+        if (!is_dir($destination)) {
+            mkdir($destination, 0755, true);
+        }
+
+        $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
+        $file->move($destination, $filename);
+
+        return $folder . '/' . $filename;
+    }
+
+    /**
+     * Hapus file dari folder public berdasarkan path relatif di DB.
+     */
+    private function deleteFromPublic(?string $path): void
+    {
+        if (!$path) {
+            return;
+        }
+
+        $fullPath = $this->publicBasePath() . '/' . ltrim($path, '/');
+
+        if (is_file($fullPath)) {
+            unlink($fullPath);
+        }
     }
 }

@@ -55,7 +55,9 @@ class BatchController extends Controller
 
         $batch->load('product');
 
-        $qrString = $batch->cipher_batch . '|' . $qr->cipher_serial;
+        // $qrString = $batch->cipher_batch . '|' . $qr->cipher_serial; // old
+        $qrString = QrCode::verifyUrl($batch->cipher_batch, $qr->cipher_serial);
+     
 
         return view('admin.batch.qr-show', compact('batch', 'qr', 'qrString'));
     }

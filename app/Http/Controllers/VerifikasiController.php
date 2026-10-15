@@ -33,17 +33,17 @@ class VerifikasiController extends Controller
     if ($batchCode === null || $decryptedSerial === null) {
         return redirect()->route('verifikasi.hasil-invalid')->with('alasan', 'tidak_ditemukan');
     }
-
+        
     if (!str_starts_with($decryptedSerial, 'OLVQ')) {
         return redirect()->route('verifikasi.hasil-invalid')->with('alasan', 'tidak_ditemukan');
     }
-
+        
     $qrId = (int) substr($decryptedSerial, 4);
-
+        
     if ($qrId <= 0) {
         return redirect()->route('verifikasi.hasil-invalid')->with('alasan', 'tidak_ditemukan');
     }
-
+        
     $batch = Batch::with('product')->where('batch_code', $batchCode)->first();
     if (!$batch) {
         return redirect()->route('verifikasi.hasil-invalid')->with('alasan', 'tidak_ditemukan');
