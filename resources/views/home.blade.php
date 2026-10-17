@@ -149,7 +149,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
         <h2 class="font-display font-semibold text-2xl lg:text-3xl text-ink mb-3">Butuh Bantuan?</h2>
         <p class="text-ink/70 max-w-md mx-auto mb-6">Jika QR Code tidak dapat dipindai atau Anda menemukan kejanggalan pada produk, segera hubungi kami.</p>
-        <a href="mailto:bantuan@tradisiverify.id" class="inline-flex px-6 py-3 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition shadow-soft">
+        {{-- <a href="mailto:bantuan@tradisiverify.id" class="inline-flex px-6 py-3 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition shadow-soft"> --}}
+            <a href="https://wa.me/6281219162525?text=Halo%20Olive%20Verify%2C%20saya%20butuh%20bantuan." target="_blank" rel="noopener" class="inline-flex px-6 py-3 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition shadow-soft">
             Hubungi Kami
         </a>
     </div>

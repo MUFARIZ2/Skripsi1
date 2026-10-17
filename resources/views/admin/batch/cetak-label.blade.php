@@ -88,7 +88,8 @@
                     <img class="label-bg" src="{{ asset( $product->label_image) }}" alt="Label">
                     <div class="label-qr"
                          style="left: {{ $product->label_qr_x }}cm; top: {{ $product->label_qr_y }}cm; width: {{ $product->label_qr_size }}cm; height: {{ $product->label_qr_size }}cm;">
-                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->margin(0)->errorCorrection('M')->generate($batch->cipher_batch . '|' . $qr->cipher_serial) !!}
+                        {{-- {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->margin(0)->errorCorrection('M')->generate($batch->cipher_batch . '|' . $qr->cipher_serial) !!} --}}
+                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->margin(0)->errorCorrection('M')->generate(\App\Models\QrCode::verifyUrl($batch->cipher_batch, $qr->cipher_serial)) !!}
                     </div>
                 </div>
             @endforeach

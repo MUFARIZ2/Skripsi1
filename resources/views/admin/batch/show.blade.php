@@ -42,9 +42,9 @@
             @endif
         </div>
         <div>
-            <h1 class="font-display font-semibold text-lg text-ink">{{ $batch->product->name }}</h1>
-            <p class="text-sm text-subtext">{{ $batch->product->ukuran }}</p>
-        </div>
+    <h1 class="font-display font-semibold text-lg text-ink">{{ $batch->product->name }}</h1>
+    {{-- <p class="text-sm text-subtext">{{ $batch->product->ukuran }}</p> --}}
+</div>
         <div class="flex-1"></div>
         <dl class="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-3 text-sm">
             @foreach ([
@@ -53,10 +53,10 @@
                 'Tanggal Produksi' => $batch->production_date->translatedFormat('d F Y'),
                 'Tanggal Expired' => $batch->expiry_date->translatedFormat('d F Y'),
             ] as $label => $value)
-                <div>
+                 <div>
                     <dt class="text-subtext mb-0.5">{{ $label }}</dt>
                     <dd class="font-medium text-ink">{{ $value }}</dd>
-                </div>
+                </div> 
             @endforeach
         </dl>
     </div>

@@ -42,8 +42,9 @@
                         <div id="qrBungkus" class="w-full aspect-square rounded-xl bg-bg border border-gray-100 flex items-center justify-center mb-4 overflow-hidden">
                 {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(240)->generate($qrString) !!}
             </div>
-            <p class="font-display font-semibold text-lg text-ink mb-4">{{ $qr->serial_number }}</p>
-                        <button type="button" onclick="window.print()" class="w-full py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition no-print">Cetak QR</button>
+            {{-- <p class="font-display font-semibold text-lg text-ink mb-4">{{ $qr->serial_number }}</p> --}}
+            <p class="font-display font-semibold text-lg text-ink mb-4">{{ 'OLVQ' . str_pad($qr->id, 12, '0', STR_PAD_LEFT) }}</p>
+            <button type="button" onclick="window.print()" class="w-full py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition no-print">Cetak QR</button>
         </div>
 
         <div class="space-y-6">
@@ -71,7 +72,8 @@
             <div class="bg-white rounded-2xl border border-gray-50 shadow-soft p-6">
                 <h2 class="font-semibold text-ink mb-4">Informasi QR</h2>
                 <dl class="grid sm:grid-cols-2 gap-y-3 text-sm">
-                    <div><dt class="text-subtext mb-0.5">Serial QR</dt><dd class="font-medium text-ink">{{ $qr->serial_number }}</dd></div>
+                    {{-- <div><dt class="text-subtext mb-0.5">Serial QR</dt><dd class="font-medium text-ink">{{ $qr->serial_number }}</dd></div> --}}
+                    <div><dt class="text-subtext mb-0.5">Serial QR</dt><dd class="font-medium text-ink">{{ 'OLVQ' . str_pad($qr->id, 12, '0', STR_PAD_LEFT) }}</dd></div>
                     <div><dt class="text-subtext mb-0.5">Tanggal Dibuat</dt><dd class="font-medium text-ink">{{ $qr->created_at->translatedFormat('d F Y, H:i') }}</dd></div>
                 </dl>
             </div>
