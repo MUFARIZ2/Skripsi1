@@ -143,6 +143,31 @@
         </div> --}}
     </div>
 </section>
+      {{-- ============ LOKASI KAMI ============ --}}
+<section id="lokasi" class="bg-white border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
+        <div class="text-center lg:text-left">
+            <h2 class="font-display font-semibold text-2xl lg:text-3xl text-ink mb-3">Lokasi Kami</h2>
+            <p class="font-semibold text-ink mb-1">Teh Olive</p>
+            <p class="text-subtext max-w-md mx-auto lg:mx-0 mb-6">
+                Jl. Tuba, Winduhaji, Kec. Kuningan, Kabupaten Kuningan, Jawa Barat 45516
+            </p>
+            <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                <a href="https://maps.app.goo.gl/mDqBaWkYqhWkKtn5A" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition shadow-soft">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Buka di Google Maps
+                </a>
+            </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-primary/10 shadow-soft">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.1584229980745!2d108.49649887257281!3d-6.990613656460738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f14161f49dc47%3A0xa68ffdca7607444d!2sJl.%20Tuba%2C%20Winduhaji%2C%20Kec.%20Kuningan%2C%20Kabupaten%20Kuningan%2C%20Jawa%20Barat%2045516!5e0!3m2!1sid!2sid!4v1792852435335!5m2!1sid!2sid"
+                    class="w-full h-72 lg:h-80 block" style="border:0;"
+                    allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="Lokasi Teh Olive"></iframe>
+        </div>
+    </div>
+</section>
 
     {{-- ============ BANTUAN ============ --}}
 <section id="bantuan" class="bg-paper">

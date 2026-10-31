@@ -13,6 +13,16 @@
         transition: background-color 9999s ease-in-out 0s;
     }
 </style>
+        {{-- <div class="flex items-center gap-3 mb-8">
+        <span class="lg:hidden w-9 h-9 rounded-full overflow-hidden shrink-0 border border-primary/10 bg-white">
+            <img src="{{ asset('logo_teh_olive.png') }}" alt="Olive Verify" class="w-full h-full object-cover">
+        </span>
+        <span class="lg:hidden w-px h-7 bg-gray-200"></span>
+        <img src="{{ asset('logo_uniku.jpg') }}" alt="Universitas Kuningan" class="h-9 w-auto">
+        <span class="w-px h-7 bg-gray-200"></span>
+        <img src="{{ asset('logo_fkom.png') }}" alt="FKOM Universitas Kuningan" class="h-9 w-auto">
+    </div> --}}
+    
     <h1 class="font-display font-semibold text-2xl text-ink mb-1">Login Admin</h1>
     <p class="text-sm text-subtext mb-8">Masuk untuk mengelola produk dan verifikasi.</p>
 

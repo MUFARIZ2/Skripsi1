@@ -29,8 +29,8 @@ class QrCode extends Model
         return $this->belongsTo(Batch::class);
     }
 
-    public static function verifyUrl(string $cipherBatch, string $cipherSerial): string
+        public static function verifyUrl(string $cipherSerial): string
     {
-        return rtrim(config('app.url'), '/') . '/verifikasi?kode=' . urlencode($cipherBatch . '|' . $cipherSerial);
+        return rtrim(config('app.url'), '/') . '/verifikasi?kode=' . urlencode($cipherSerial);
     }
 }

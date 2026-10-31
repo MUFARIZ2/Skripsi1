@@ -53,6 +53,7 @@ class ProductController extends Controller
             'label_qr_y' => 'nullable|required_with:label_image|numeric|min:0|max:100',
             'label_qr_size' => 'nullable|required_with:label_image|numeric|min:0.5|max:50',
             'label_width_cm' => 'nullable|numeric|min:1|max:100',
+            'label_tgl_color' => 'nullable|in:hitam,putih',
         ]);
 
         $imagePath = null;
@@ -77,6 +78,7 @@ class ProductController extends Controller
             'label_qr_y' => $validated['label_qr_y'] ?? null,
             'label_qr_size' => $validated['label_qr_size'] ?? null,
             'label_width_cm' => $validated['label_width_cm'] ?? null,
+            'label_tgl_color' => $validated['label_tgl_color'] ?? 'hitam',
         ]);
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan.');
@@ -102,8 +104,9 @@ class ProductController extends Controller
             'label_qr_x' => 'nullable|required_with:label_image|numeric|min:0|max:100',
             'label_qr_y' => 'nullable|required_with:label_image|numeric|min:0|max:100',
             'label_qr_size' => 'nullable|required_with:label_image|numeric|min:0.5|max:50',
-                        'label_width_cm' => 'nullable|numeric|min:1|max:100',
-            ]);
+            'label_width_cm' => 'nullable|numeric|min:1|max:100',
+            'label_tgl_color' => 'nullable|in:hitam,putih',
+        ]);
 
         $imagePath = $product->image;
 
@@ -130,6 +133,8 @@ class ProductController extends Controller
             'label_qr_x' => $validated['label_qr_x'] ?? null,
             'label_qr_y' => $validated['label_qr_y'] ?? null,
             'label_qr_size' => $validated['label_qr_size'] ?? null,
+            'label_width_cm' => $validated['label_width_cm'] ?? null,
+            'label_tgl_color' => $validated['label_tgl_color'] ?? $product->label_tgl_color,
         ]);
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil diperbarui.');

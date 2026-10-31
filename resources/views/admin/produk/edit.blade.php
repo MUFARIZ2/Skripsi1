@@ -89,7 +89,16 @@
                     @enderror
                 </div>
 
-                                <input type="hidden" id="label_width_cm" name="label_width_cm" value="{{ old('label_width_cm', $product->label_width_cm ?? 12) }}">
+                <div class="mb-4">
+                    <label for="label_tgl_color" class="block text-sm font-medium text-ink mb-2">Warna Tanggal di Label</label>
+                        <select id="label_tgl_color" name="label_tgl_color" class="w-full sm:w-48 px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary">
+                        <option value="hitam" {{ old('label_tgl_color', $product->label_tgl_color ?? 'hitam') === 'hitam' ? 'selected' : '' }}>Hitam (untuk label terang)</option>
+                        <option value="putih" {{ old('label_tgl_color', $product->label_tgl_color ?? 'hitam') === 'putih' ? 'selected' : '' }}>Putih (untuk label gelap)</option>
+                    </select>
+                    <p class="text-xs text-subtext mt-1.5">Warna tulisan tanggal produksi dan expired yang dicetak otomatis di label.</p>
+                </div>
+
+                <input type="hidden" id="label_width_cm" name="label_width_cm" value="{{ old('label_width_cm', $product->label_width_cm ?? 12) }}">
 
                 <div id="labelEditor" class="{{ $product->label_image ? '' : 'hidden' }} mb-4">
                     <p class="text-sm font-medium text-ink mb-2">Posisi QR</p>

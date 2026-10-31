@@ -28,6 +28,15 @@
         height: 100%;
         display: block;
     }
+    
+        .label-sheet .label-tgl {
+        position: absolute;
+        left: 1.2cm;
+        width: 4.57cm;
+        font-size: 9pt;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
 
         @media screen and (max-width: 640px) {
         .print-area { zoom: 0.68; }
@@ -88,9 +97,10 @@
                     <img class="label-bg" src="{{ asset( $product->label_image) }}" alt="Label">
                     <div class="label-qr"
                          style="left: {{ $product->label_qr_x }}cm; top: {{ $product->label_qr_y }}cm; width: {{ $product->label_qr_size }}cm; height: {{ $product->label_qr_size }}cm;">
-                        {{-- {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->margin(0)->errorCorrection('M')->generate($batch->cipher_batch . '|' . $qr->cipher_serial) !!} --}}
-                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->margin(0)->errorCorrection('M')->generate(\App\Models\QrCode::verifyUrl($batch->cipher_batch, $qr->cipher_serial)) !!}
+                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->margin(0)->errorCorrection('M')->generate(\App\Models\QrCode::verifyUrl($qr->cipher_serial)) !!}
                     </div>
+                    <div class="label-tgl" style="top: 1.36cm; color: {{ ($product->label_tgl_color ?? 'hitam') === 'putih' ? '#fff' : '#000' }};">Produksi : {{ $batch->production_date->translatedFormat('d M Y') }}</div>
+                    <div class="label-tgl" style="top: 1.89cm; color: {{ ($product->label_tgl_color ?? 'hitam') === 'putih' ? '#fff' : '#000' }};">Exp : {{ $batch->expiry_date->translatedFormat('d M Y') }}</div>
                 </div>
             @endforeach
         </div>

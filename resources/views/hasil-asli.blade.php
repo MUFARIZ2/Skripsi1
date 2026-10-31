@@ -29,9 +29,13 @@
             </div>
 
             <div class="p-8">
-                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
-                    <div class="w-16 h-16 rounded-xl bg-paper border border-primary/10 flex items-center justify-center shrink-0">
-                        <svg class="w-8 h-8 text-primary/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6l1 4H8l1-4zM8 7h8l1 12a2 2 0 01-2 2H9a2 2 0 01-2-2L8 7z"/></svg>
+                    <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
+                    <div class="w-16 h-16 rounded-xl bg-paper border border-primary/10 flex items-center justify-center shrink-0 overflow-hidden">
+                        @if (!empty($data['foto']))
+                            <img src="{{ $data['foto'] }}" alt="{{ $data['nama_produk'] ?? 'Produk' }}" class="w-full h-full object-cover">
+                        @else
+                            <svg class="w-8 h-8 text-primary/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6l1 4H8l1-4zM8 7h8l1 12a2 2 0 01-2 2H9a2 2 0 01-2-2L8 7z"/></svg>
+                        @endif
                     </div>
                     <div>
                         <h2 class="font-semibold text-ink">{{ $data['nama_produk'] ?? '-' }}</h2>

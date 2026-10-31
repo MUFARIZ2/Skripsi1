@@ -84,11 +84,7 @@
                     <h2 class="font-semibold text-ink">Data Enkripsi</h2>
                     <span class="px-2 py-0.5 rounded-full bg-warning/10 text-warning text-xs font-semibold">Khusus Admin</span>
                 </div>
-                <dl class="grid sm:grid-cols-2 gap-y-3 text-sm">
-                    <div>
-                        <dt class="text-subtext mb-0.5">Cipher Batch</dt>
-                        <dd class="font-mono text-xs text-ink bg-bg px-2 py-1 rounded-lg inline-block break-all">{{ $batch->cipher_batch }}</dd>
-                    </div>
+                <dl class="text-sm">
                     <div>
                         <dt class="text-subtext mb-0.5">Cipher Serial</dt>
                         <dd class="font-mono text-xs text-ink bg-bg px-2 py-1 rounded-lg inline-block break-all">{{ $qr->cipher_serial }}</dd>

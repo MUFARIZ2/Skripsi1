@@ -24,6 +24,7 @@ class Product extends Model
         'label_qr_y',
         'label_qr_size',
         'label_width_cm',
+        'label_tgl_color',
     ];
 
     /**

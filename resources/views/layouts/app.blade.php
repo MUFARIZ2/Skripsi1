@@ -126,7 +126,26 @@
                 <span class="font-display font-semibold text-sm text-ink">Olive Verify</span>
             </div>
             <p class="text-sm text-subtext text-center">Sistem verifikasi keaslian produk minuman tradisional berbasis QR Code.</p>
-            <p class="text-xs text-subtext">&copy; {{ date('Y') }} Olive Verify</p>
+            <div class="flex items-center gap-4">
+                                <a href="https://www.instagram.com/jamuteholive/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm text-subtext hover:text-primary transition" aria-label="Instagram Teh Olive">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FEDA75"/>
+                                <stop offset="30%" stop-color="#FA7E1E"/>
+                                <stop offset="55%" stop-color="#D62976"/>
+                                <stop offset="80%" stop-color="#962FBF"/>
+                                <stop offset="100%" stop-color="#4F5BD5"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#igGradient)" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="4" stroke="url(#igGradient)" stroke-width="2"/>
+                        <circle cx="17.3" cy="6.7" r="1.2" fill="url(#igGradient)"/>
+                    </svg>
+                    <span>@jamuteholive</span>
+                </a>
+                <p class="text-xs text-subtext">&copy; {{ date('Y') }} Olive Verify</p>
+            </div>
         </div>
     </footer>
 
